@@ -108,56 +108,6 @@ public class BasicController {
     }
 
 
-//    @ApiOperation(value = "文件下载测试")
-//    @PostMapping("/download/{name}")
-//    public ObjectId fileDownload(@PathVariable String name, HttpServletResponse response){
-//        try{
-//            GridFSFile file = gridFsTemplate.findOne(query(whereFilename().is(name)));
-//            if(file != null){
-//                System.out.println("_id:"+file.getId());
-//                System.out.println("_objectId:"+file.getObjectId());
-//                GridFSDownloadStream in = gridFSBucket.openDownloadStream(file.getObjectId());
-//
-//                GridFsResource resource = new GridFsResource(file,in);
-//                InputStream inputStream = resource.getInputStream();
-//                byte[] f = getBytes(inputStream);
-//                OutputStream out = response.getOutputStream();
-//                out.write(f);
-//            }
-//        }catch (Exception e){
-//            e.printStackTrace();
-//        }
-//        return null;
-//    }
-
-
-//    @RequestMapping(value = "/downloadFile")
-//    public void downloadFile(@RequestParam(name = "file_id") String fileId, HttpServletRequest request, HttpServletResponse response) throws Exception {
-//        Query query = Query.query(Criteria.where("_id").is(fileId));
-//        // 查询单个文件
-//        GridFSFile gfsfile = gridFsTemplate.findOne(query);
-//        if (gfsfile == null) {
-//            return;
-//        }
-//        String fileName = gfsfile.getFilename().replace(",", "");
-//        //处理中文文件名乱码
-//        if (request.getHeader("User-Agent").toUpperCase().contains("MSIE") ||
-//                request.getHeader("User-Agent").toUpperCase().contains("TRIDENT")
-//                || request.getHeader("User-Agent").toUpperCase().contains("EDGE")) {
-//            fileName = java.net.URLEncoder.encode(fileName, "UTF-8");
-//        } else {
-//            //非IE浏览器的处理：
-//            fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
-//        }
-//        // 通知浏览器进行文件下载
-//        response.setContentType(gfsfile.getContentType());
-//        response.setHeader("Content-Disposition", "attachment;filename=\"" + fileName + "\"");
-////        gfsfile.writeTo(response.getOutputStream());
-//
-//    }
-
-
-
 
     @ApiOperation(value = "下载文件测试", notes = "下载文件测试demo")
     @RequestMapping(value = "/download", method = {RequestMethod.GET, RequestMethod.POST})
